@@ -32,4 +32,11 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/sun" />
 
+    <ImageView
+        android:id="@+id/night"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/night" />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

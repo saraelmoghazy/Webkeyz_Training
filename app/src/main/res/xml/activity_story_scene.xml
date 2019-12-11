@@ -43,6 +43,16 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
+            android:id="@+id/night"
+            android:alpha="1.0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            />
+        <Constraint
             android:id="@+id/imageView11"
             android:layout_width="136dp"
             android:layout_height="108dp"
@@ -90,6 +100,16 @@
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/night"
+            android:alpha="0.0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            />
         <Constraint
             android:id="@+id/imageView11"
             android:layout_width="118dp"
