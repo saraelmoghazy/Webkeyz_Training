@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MaterialDesignComponentsActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Dialogue"
+        app:layout_constraintBottom_toTopOf="@id/bottomActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bottomActionButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show bottom action bar"
+        app:layout_constraintBottom_toTopOf="@id/bottomSheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bottomSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sheets"
+        app:layout_constraintBottom_toTopOf="@id/materialCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomActionButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="material card"
+        app:layout_constraintBottom_toTopOf="@+id/chipsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomSheet" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/chipsButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="chips"
+        app:layout_constraintBottom_toTopOf="@id/textFieldButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialCard" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/textFieldButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextField"
+        app:layout_constraintBottom_toTopOf="@id/collapsingToolBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipsButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/collapsingToolBar"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="collapsing ToolBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFieldButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

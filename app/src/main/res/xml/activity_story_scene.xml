@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:touchAnchorId="@id/imageView11"
+            motion:touchAnchorSide="right"
+            />
+       <KeyFrameSet>
+           <KeyPosition
+               motion:framePosition="25"
+               motion:motionTarget="@id/imageView11"
+               motion:keyPositionType="parentRelative"
+                motion:percentY="0.5"
+               />
+           <KeyAttribute
+               motion:framePosition="0"
+               motion:motionTarget="@id/imageView11"
+               android:alpha="0.0"
+               />
+           <KeyAttribute
+               motion:framePosition="100"
+               motion:motionTarget="@id/imageView11"
+               android:alpha="1.0"
+               />
+           <KeyAttribute
+               motion:framePosition="0"
+               motion:motionTarget="@id/clouds"
+               android:translationX="-415dp"
+               />
+           <KeyAttribute
+               motion:framePosition="0"
+               motion:motionTarget="@id/tree"
+               android:translationX="415dp"
+               />
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/night"
+            android:alpha="1.0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            />
+        <Constraint
+            android:id="@+id/imageView11"
+            android:layout_width="136dp"
+            android:layout_height="108dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
+        <Constraint
+            android:id="@+id/clouds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            />
+        <Constraint
+            android:id="@+id/tree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/clouds"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/imageView10"
+            motion:layout_constraintBottom_toBottomOf="@+id/tree"
+            motion:layout_constraintTop_toTopOf="@+id/clouds"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@+id/tree"
+            motion:layout_constraintVertical_bias="0.093"
+            motion:layout_constraintHorizontal_bias="0.424" />
+        <Constraint
+            android:layout_height="108dp"
+            android:layout_width="136dp"
+            android:id="@+id/imageView11"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/night"
+            android:alpha="0.0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            />
+        <Constraint
+            android:id="@+id/imageView11"
+            android:layout_width="118dp"
+            android:layout_height="104dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintHorizontal_bias="0.767" />
+        <Constraint
+            android:id="@+id/clouds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            />
+        <Constraint
+            android:id="@+id/tree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/clouds"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            />
+    </ConstraintSet>
+</MotionScene>
