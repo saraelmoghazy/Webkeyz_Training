@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.activityTransition).setOnClickListener(this);
         findViewById(R.id.fragmentTransition).setOnClickListener(this);
         findViewById(R.id.recyclerAnimationButton).setOnClickListener(this);
+        findViewById(R.id.shimmerLayout_button).setOnClickListener(this);
 
     }
 
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }case R.id.recyclerAnimationButton:{
                 startActivity(new Intent(MainActivity.this, RecyclerViewAnimationActivity.class));
+                break;
+            }case R.id.shimmerLayout_button:{
+                startActivity(new Intent(MainActivity.this, ShimmerLayoutActivity.class));
                 break;
             }
         }
