@@ -48,15 +48,20 @@ public class MaterialDesignComponentsActivity extends AppCompatActivity implemen
             }
             case R.id.bottomSheet:{
                 startActivity(new Intent(MaterialDesignComponentsActivity.this,BottomSheetsActivity.class));
+                break;
             }
             case R.id.materialCard:{
                 startActivity(new Intent(MaterialDesignComponentsActivity.this,MaterialCardActivity.class));
+                break;
             }case R.id.chipsButton:{
                 startActivity(new Intent(MaterialDesignComponentsActivity.this,ChipsActivity.class));
+                break;
             }case R.id.textFieldButton:{
                 startActivity(new Intent(MaterialDesignComponentsActivity.this,TextFieldActivity.class));
+                break;
             }case R.id.collapsingToolBar:{
                 startActivity(new Intent(MaterialDesignComponentsActivity.this,CollapsingToolBarActivity.class));
+                break;
             }
         }
     }
