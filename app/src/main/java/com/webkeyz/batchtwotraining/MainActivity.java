@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.webkeyz.batchtwotraining.fragments.Main2Activity;
+import com.webkeyz.batchtwotraining.recyclerview_animation.RecyclerViewAnimationActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.activityTransition).setOnClickListener(this);
         findViewById(R.id.fragmentTransition).setOnClickListener(this);
+        findViewById(R.id.recyclerAnimationButton).setOnClickListener(this);
+
     }
 
     @Override
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }case R.id.fragmentTransition:{
                 startActivity(new Intent(MainActivity.this, Main2Activity.class));
+                break;
+            }case R.id.recyclerAnimationButton:{
+                startActivity(new Intent(MainActivity.this, RecyclerViewAnimationActivity.class));
                 break;
             }
         }
