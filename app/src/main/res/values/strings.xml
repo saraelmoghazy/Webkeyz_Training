@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BatchTwoTraining</string>
+    <string name="simple_transition">simpleTransition</string>
+    <string name="hippoDetails">Birds do it, bees do it, even educated fleas do it - well, maybe they dont fall in love but they do procreate, so can we estimate how many animals are born every day across the world?
+That was the question posed by a listener to the BBCs More or Less programme, a show which aims to make sense of the numbers that inform our lives.
+First things first, what do we mean by the term animal? The Oxford English Dictionary defines an animal as a living organism which feeds on organic matter, typically having specialised sense organs and nervous system and able to respond rapidly to stimuli.
+So thats mammals and non-mammals, vertebrates and invertebrates, animals that hatch, and animals that have live births.</string>
 </resources>

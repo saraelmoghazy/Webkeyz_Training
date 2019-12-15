@@ -4,26 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ActivityTransitionActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/activityTransition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="activity transition"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentTransition"
+    <ImageView
+        android:id="@+id/hippoImageView"
+        android:layout_width="172dp"
+        android:layout_height="136dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/hippo"
+        android:transitionName="@string/simple_transition"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="UnusedAttribute" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/fragmentTransition"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fragment transition"
+        android:layout_marginBottom="8dp"
+        android:text="go to activity two"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityTransition" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
