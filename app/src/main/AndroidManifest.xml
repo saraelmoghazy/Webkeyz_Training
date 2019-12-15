@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShimmerLayoutActivity"></activity>
+        <activity android:name=".lottie_animation.LottieAnimationsActivity"></activity>
+        <activity android:name=".ShimmerLayoutActivity" />
         <activity android:name=".recyclerview_animation.StaggeredRecyclerViewActivity" />
         <activity android:name=".recyclerview_animation.LinearRecyclerViewActivity" />
         <activity android:name=".recyclerview_animation.RecyclerViewAnimationActivity" />

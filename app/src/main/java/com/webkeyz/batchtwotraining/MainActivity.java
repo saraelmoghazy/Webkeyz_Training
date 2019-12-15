@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.webkeyz.batchtwotraining.fragments.Main2Activity;
+import com.webkeyz.batchtwotraining.lottie_animation.LottieAnimationsActivity;
 import com.webkeyz.batchtwotraining.recyclerview_animation.RecyclerViewAnimationActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.fragmentTransition).setOnClickListener(this);
         findViewById(R.id.recyclerAnimationButton).setOnClickListener(this);
         findViewById(R.id.shimmerLayout_button).setOnClickListener(this);
+        findViewById(R.id.lottieAnimation_button).setOnClickListener(this);
 
     }
 
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }case R.id.shimmerLayout_button:{
                 startActivity(new Intent(MainActivity.this, ShimmerLayoutActivity.class));
+                break;
+            }case R.id.lottieAnimation_button:{
+                startActivity(new Intent(MainActivity.this, LottieAnimationsActivity.class));
                 break;
             }
         }
