@@ -4,15 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/constraintLayoutBuilder"
     tools:context=".MainActivity">
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/builder_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="builder pattern"
+        app:layout_constraintBottom_toTopOf="@id/observer_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/observer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="observer pattern"
+        app:layout_constraintBottom_toTopOf="@id/adapter_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/builder_button"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/adapter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="adapter pattern"
+        app:layout_constraintBottom_toTopOf="@id/singleton_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/observer_button"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/singleton_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="singleton pattern"
+        app:layout_constraintBottom_toTopOf="@id/factory_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adapter_button"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/factory_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="factory pattern"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/singleton_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
