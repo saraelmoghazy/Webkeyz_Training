@@ -39,14 +39,4 @@ public class CreatingObservables {
         return stringObservable;
     }
 
-    public List<String> getAlphabetList() {
-        List<String> alphabet = new ArrayList<>();
-        alphabet.add("a");
-        alphabet.add("b");
-        alphabet.add("c");
-        alphabet.add("d");
-        alphabet.add("e");
-        alphabet.add("f");
-        return alphabet;
-    }
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.webkeyz.batchtwotraining.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -18,10 +19,12 @@ import io.reactivex.disposables.Disposable;
 public class RxJavaActivity extends AppCompatActivity {
     private static final String TAG = "RxJavaActivity";
     // ui components
-    MaterialButton createOperatorButton, justOperatorButton, rangeOperatorButton;
+    MaterialButton createOperatorButton, justOperatorButton, rangeOperatorButton,
+            mapOperatorButton, switchMapOperatorButton;
     // vars
     CompositeDisposable disposable;
     CreatingObservables creatingObservables;
+    TransformingObservables transformingObservables;
     List<String> alphabets;
 
     @Override
@@ -32,9 +35,12 @@ public class RxJavaActivity extends AppCompatActivity {
         createOperatorButton = findViewById(R.id.createOperator_button);
         justOperatorButton = findViewById(R.id.justOperator_button);
         rangeOperatorButton = findViewById(R.id.rangeOperator_button);
+        mapOperatorButton = findViewById(R.id.mapOperator_button);
+        switchMapOperatorButton = findViewById(R.id.switchMapOperator_button);
         disposable = new CompositeDisposable();
         creatingObservables = new CreatingObservables();
-        alphabets = creatingObservables.getAlphabetList();
+        transformingObservables = new TransformingObservables();
+        alphabets = getAlphabetList();
     }
 
     @Override
@@ -43,12 +49,73 @@ public class RxJavaActivity extends AppCompatActivity {
         createOperator();
         justOperator();
         rangeOperator();
+        mapOperator();
+        switchMapOperator();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         disposable.clear();
+    }
+
+    private void switchMapOperator() {
+        switchMapOperatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transformingObservables.switchMapOperator()
+                        .subscribe(new Observer<Integer>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                disposable.add(d);
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+                                Log.d(TAG, "onNext: " + integer);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                Log.d(TAG, "onComplete switch map: CALLED");
+                            }
+                        });
+            }
+        });
+    }
+
+    private void mapOperator() {
+        mapOperatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transformingObservables.mapOperator()
+                        .subscribe(new Observer<Integer>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                disposable.add(d);
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+                                Log.d(TAG, "onNext: " + integer);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                Log.d(TAG, "onComplete map: CALLED");
+                            }
+                        });
+            }
+        });
     }
 
     private void rangeOperator() {
@@ -137,5 +204,16 @@ public class RxJavaActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    public List<String> getAlphabetList() {
+        List<String> alphabet = new ArrayList<>();
+        alphabet.add("a");
+        alphabet.add("b");
+        alphabet.add("c");
+        alphabet.add("d");
+        alphabet.add("e");
+        alphabet.add("f");
+        return alphabet;
     }
 }
