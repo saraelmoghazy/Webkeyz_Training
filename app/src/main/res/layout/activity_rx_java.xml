@@ -51,9 +51,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="switch map operator"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/distinctOperator_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mapOperator_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/distinctOperator_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="distinct operator"
+        app:layout_constraintBottom_toTopOf="@id/elementAtOperator_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchMapOperator_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/elementAtOperator_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="elementAt operator"
+        app:layout_constraintBottom_toTopOf="@id/filterOperator_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distinctOperator_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filterOperator_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="filter operator"
+        app:layout_constraintBottom_toTopOf="@id/mergeOperator_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/elementAtOperator_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mergeOperator_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="merge operator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterOperator_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
