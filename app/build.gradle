@@ -35,6 +35,7 @@ dependencies {
     // paging
     def paging_version = "2.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
     // room
     def room_version = "2.2.3"
     implementation "androidx.room:room-runtime:$room_version"
@@ -49,4 +50,13 @@ dependencies {
     // ViewModel and LiveData
     def lifecycle_version = "2.2.0-rc03"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    // rxJavaAdapter
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    // rxJava and rxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+    implementation'com.squareup.okhttp3:logging-interceptor:4.1.0'
 }
