@@ -22,6 +22,4 @@ public class ServiceGenerator {
     public static FeedApi getFeedApi() {
         return feedApi;
     }
-
-
 }
