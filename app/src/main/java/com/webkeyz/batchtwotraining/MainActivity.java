@@ -1,6 +1,7 @@
 package com.webkeyz.batchtwotraining;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -11,7 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.webkeyz.batchtwotraining.adapters.FeedAdapter;
 import com.webkeyz.batchtwotraining.models.ArticlesItem;
+import com.webkeyz.batchtwotraining.models.Feed;
+import com.webkeyz.batchtwotraining.network.FeedApi;
+import com.webkeyz.batchtwotraining.network.ServiceGenerator;
 import com.webkeyz.batchtwotraining.viewmodels.FeedViewModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -30,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         feedAdapter = new FeedAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(feedAdapter);
-
         feedViewModel.getPagedListLiveData().observe(MainActivity.this, new Observer<PagedList<ArticlesItem>>() {
             @Override
             public void onChanged(PagedList<ArticlesItem> articlesItems) {
