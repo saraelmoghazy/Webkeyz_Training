@@ -22,7 +22,7 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
     @NonNull
     @Override
     public ArticlesItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_listitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_listitem, parent, false);
         return new ArticlesItemViewHolder(view);
     }
 
@@ -30,8 +30,8 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
     public void onBindViewHolder(@NonNull ArticlesItemViewHolder holder, int position) {
         ArticlesItem articlesItem = getItem(position);
         if (articlesItem != null) {
-            holder.nameTextView.setText(articlesItem.getTitle());
-            holder.ageTextView.setText(articlesItem.getPublishedAt());
+            holder.titleTextView.setText(articlesItem.getTitle());
+            holder.authorTextView.setText(articlesItem.getPublishedAt());
         }
     }
 
@@ -52,12 +52,12 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
             };
 
     public class ArticlesItemViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView, ageTextView;
+        TextView titleTextView, authorTextView;
 
         public ArticlesItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.name);
-            ageTextView = itemView.findViewById(R.id.age);
+            titleTextView = itemView.findViewById(R.id.title);
+            authorTextView = itemView.findViewById(R.id.author);
         }
     }
 }
