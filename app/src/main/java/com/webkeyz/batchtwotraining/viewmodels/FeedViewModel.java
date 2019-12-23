@@ -24,7 +24,7 @@ public class FeedViewModel extends AndroidViewModel {
         FeedDataFactory feedDataFactory = new FeedDataFactory();
         PagedList.Config pagedListConfig = (new PagedList.Config.Builder())
                 .setEnablePlaceholders(false)
-                .setInitialLoadSizeHint(10)
+                .setInitialLoadSizeHint(40)
                 .setPageSize(20)
                 .build();
 

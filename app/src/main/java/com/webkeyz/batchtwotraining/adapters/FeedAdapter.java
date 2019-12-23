@@ -31,7 +31,7 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
         ArticlesItem articlesItem = getItem(position);
         if (articlesItem != null) {
             holder.titleTextView.setText(articlesItem.getTitle());
-            holder.authorTextView.setText(articlesItem.getPublishedAt());
+            holder.authorTextView.setText(articlesItem.getAuthor());
         }
     }
 

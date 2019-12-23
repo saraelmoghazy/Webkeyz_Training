@@ -28,7 +28,7 @@ public class FeedDataSource extends PageKeyedDataSource<Integer, ArticlesItem> {
                 .enqueue(new Callback<Feed>() {
                     @Override
                     public void onResponse(Call<Feed> call, Response<Feed> response) {
-                        callback.onResult(response.body().getArticles(), null, 1);
+                        callback.onResult(response.body().getArticles(), null, 2);
                     }
 
                     @Override
