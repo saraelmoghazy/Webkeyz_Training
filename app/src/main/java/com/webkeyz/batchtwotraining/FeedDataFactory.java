@@ -1,6 +1,7 @@
 package com.webkeyz.batchtwotraining;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
@@ -16,7 +17,7 @@ public class FeedDataFactory extends DataSource.Factory {
         return feedDataSource;
     }
 
-    public MutableLiveData<FeedDataSource> getSourceMutableLiveData() {
+    public LiveData<FeedDataSource> getSourceMutableLiveData() {
         return sourceMutableLiveData;
     }
 }

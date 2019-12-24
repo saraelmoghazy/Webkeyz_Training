@@ -1,6 +1,6 @@
 package com.webkeyz.batchtwotraining.network;
 
-import com.webkeyz.batchtwotraining.Constants;
+import com.webkeyz.batchtwotraining.utils.Constants;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

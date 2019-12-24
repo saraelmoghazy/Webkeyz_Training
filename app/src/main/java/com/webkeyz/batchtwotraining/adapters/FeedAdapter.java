@@ -1,5 +1,6 @@
 package com.webkeyz.batchtwotraining.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.webkeyz.batchtwotraining.R;
 import com.webkeyz.batchtwotraining.models.ArticlesItem;
+import com.webkeyz.batchtwotraining.utils.NetworkState;
 
-public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.ArticlesItemViewHolder> {
+public class FeedAdapter extends PagedListAdapter<ArticlesItem, RecyclerView.ViewHolder> {
+    private static final String TAG = "FeedAdapter";
+    private final int LOADING = -1;
+    private final int ERROR = -2;
+    private final int SUCCESS = 1;
+    private NetworkState networkState;
 
     public FeedAdapter() {
         super(DIFF_CALLBACK);
@@ -21,17 +28,30 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
 
     @NonNull
     @Override
-    public ArticlesItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_listitem, parent, false);
-        return new ArticlesItemViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == LOADING) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_layout, parent, false);
+            return new LoadingViewHolder(view);
+        } else if (viewType == ERROR) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.error_layout, parent, false);
+            return new ErrorViewHolder(view);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_listitem, parent, false);
+            return new ArticlesItemViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArticlesItemViewHolder holder, int position) {
-        ArticlesItem articlesItem = getItem(position);
-        if (articlesItem != null) {
-            holder.titleTextView.setText(articlesItem.getTitle());
-            holder.authorTextView.setText(articlesItem.getAuthor());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        int itemViewType = getItemViewType(position);
+        if (itemViewType == SUCCESS) {
+            ArticlesItem articlesItem = getItem(position);
+            Log.d(TAG, "onBindViewHolder: " + articlesItem);
+            if (articlesItem != null) {
+                ((ArticlesItemViewHolder) holder).titleTextView.setText(articlesItem.getTitle());
+                ((ArticlesItemViewHolder) holder).authorTextView.setText(articlesItem.getAuthor());
+            }
         }
     }
 
@@ -41,7 +61,7 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
                 // but ID is fixed.
                 @Override
                 public boolean areItemsTheSame(@NonNull ArticlesItem oldArticle, @NonNull ArticlesItem newArticle) {
-                    return oldArticle.getSource().getId() == newArticle.getSource().getId();
+                    return oldArticle.getSource().getId().equals(newArticle.getSource().getId());
                 }
 
                 @Override
@@ -51,6 +71,21 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
                 }
             };
 
+    @Override
+    public int getItemViewType(int position) {
+        if (networkState.isLoading && position == getItemCount() - 1) {
+            return LOADING;
+        } else if (networkState.status == NetworkState.Status.ERROR && position == getItemCount() - 1) {
+            return ERROR;
+        } else {
+            return SUCCESS;
+        }
+    }
+
+    public void setNetworkState(NetworkState networkState) {
+        this.networkState = networkState;
+    }
+
     public class ArticlesItemViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView, authorTextView;
 
@@ -58,6 +93,18 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, FeedAdapter.Arti
             super(itemView);
             titleTextView = itemView.findViewById(R.id.title);
             authorTextView = itemView.findViewById(R.id.author);
+        }
+    }
+
+    public class LoadingViewHolder extends RecyclerView.ViewHolder {
+        public LoadingViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
+
+    public class ErrorViewHolder extends RecyclerView.ViewHolder {
+        public ErrorViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
 }

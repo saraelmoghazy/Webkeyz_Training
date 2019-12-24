@@ -33,6 +33,20 @@ public class ArticlesItem implements Parcelable {
     @SerializedName("content")
     private String content;
 
+    private int id;
+
+    public ArticlesItem(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     protected ArticlesItem(Parcel in) {
         publishedAt = in.readString();
         author = in.readString();
