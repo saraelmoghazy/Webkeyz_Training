@@ -1,14 +1,14 @@
 package com.webkeyz.batchtwotraining.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.webkeyz.batchtwotraining.R;
+import com.webkeyz.batchtwotraining.databinding.UserListItemBinding;
 import com.webkeyz.batchtwotraining.models.User;
 
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.inject.Inject;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private List<User> userList;
+    private LayoutInflater layoutInflater;
 
     @Inject
     public UserAdapter() {
@@ -26,14 +27,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list_item, parent, false);
-        return new UserViewHolder(view);
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
+        UserListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.user_list_item, parent, false);
+        return new UserViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        holder.id.setText(String.valueOf(userList.get(position).getId()));
-        holder.name.setText(userList.get(position).getName());
+        holder.bind(userList.get(position));
     }
 
     @Override
@@ -47,12 +50,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView id, name;
+        private UserListItemBinding binding;
 
-        public UserViewHolder(@NonNull View itemView) {
-            super(itemView);
-            id = itemView.findViewById(R.id.userId_textView);
-            name = itemView.findViewById(R.id.userName_textView);
+        public UserViewHolder(UserListItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(User user) {
+            binding.userIdTextView.setText(String.valueOf(user.getId()));
+            binding.userNameTextView.setText(user.getName());
+            binding.executePendingBindings();
         }
     }
 }
