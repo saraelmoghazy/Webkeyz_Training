@@ -4,14 +4,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.webkeyz.batchtwotraining.R;
+import com.webkeyz.batchtwotraining.databinding.FeedListitemBinding;
 import com.webkeyz.batchtwotraining.models.ArticlesItem;
 import com.webkeyz.batchtwotraining.utils.NetworkState;
 
@@ -26,19 +27,24 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, RecyclerView.Vie
         super(DIFF_CALLBACK);
     }
 
+    private LayoutInflater layoutInflater;
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
         View view;
         if (viewType == LOADING) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_layout, parent, false);
+            view = layoutInflater.inflate(R.layout.loading_layout, parent, false);
             return new LoadingViewHolder(view);
         } else if (viewType == ERROR) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.error_layout, parent, false);
+            view = layoutInflater.inflate(R.layout.error_layout, parent, false);
             return new ErrorViewHolder(view);
         } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_listitem, parent, false);
-            return new ArticlesItemViewHolder(view);
+            FeedListitemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.feed_listitem, parent, false);
+            return new ArticlesItemViewHolder(binding);
         }
     }
 
@@ -49,8 +55,7 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, RecyclerView.Vie
             ArticlesItem articlesItem = getItem(position);
             Log.d(TAG, "onBindViewHolder: " + articlesItem);
             if (articlesItem != null) {
-                ((ArticlesItemViewHolder) holder).titleTextView.setText(articlesItem.getTitle());
-                ((ArticlesItemViewHolder) holder).authorTextView.setText(articlesItem.getAuthor());
+                ((ArticlesItemViewHolder) holder).bind(articlesItem);
             }
         }
     }
@@ -87,12 +92,17 @@ public class FeedAdapter extends PagedListAdapter<ArticlesItem, RecyclerView.Vie
     }
 
     public class ArticlesItemViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, authorTextView;
+        private FeedListitemBinding binding;
 
-        public ArticlesItemViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleTextView = itemView.findViewById(R.id.title);
-            authorTextView = itemView.findViewById(R.id.author);
+        public ArticlesItemViewHolder(FeedListitemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(ArticlesItem item) {
+            binding.title.setText(item.getTitle());
+            binding.author.setText(item.getAuthor());
+            binding.executePendingBindings();
         }
     }
 
