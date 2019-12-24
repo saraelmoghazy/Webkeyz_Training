@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -26,4 +30,27 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // dagger2
+    def dagger2_version = "2.25.3"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    implementation "com.google.dagger:dagger-android:$dagger2_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
+    // retrofit
+    def retrofit_version ="2.7.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    // retrofit adapter rx
+    def rxAdapter_version = "2.5.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxAdapter_version"
+    // rx java and rx android
+    def rxJava_version = "2.2.16"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava_version"
+    def rxAndroid_version = "2.1.1"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+    def recyclerView_version = "1.1.0"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView_version"
+    def lifecycle_version = "2.2.0-rc03"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 }
